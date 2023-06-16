@@ -1,6 +1,7 @@
 import express from 'express'
 import { getUsers, getUser, createUser, loginUser, addDestination, 
-        getDestinations, deleteDestination, updatedestination } from './database.js'
+        getDestinations, deleteDestination, updatedestination,
+        getDictinctAddressFrom, getDictinctAddressTo } from './database.js'
 // import mysql from 'mysql2'
 
 const app = express()
@@ -60,15 +61,15 @@ app.get("/getdestinations", async (req, res) => {
   res.send(destinations)
 }) 
 
-// app.get("/getDictinctAddressFrom", async (req, res) => {
-//   const destinations = await getDictinctAddressFrom() 
-//   res.send(destinations)
-// }) 
+app.get("/getDictinctAddressFrom", async (req, res) => {
+  const destinations = await getDictinctAddressFrom() 
+  res.send(destinations)
+}) 
 
-// app.get("/getDictinctAddressTo", async (req, res) => {
-//   const destinations = await getDictinctAddressTo() 
-//   res.send(destinations)
-// }) 
+app.get("/getDictinctAddressTo", async (req, res) => {
+  const destinations = await getDictinctAddressTo() 
+  res.send(destinations)
+}) 
 
 app.delete("/deletedestination/:desid", async (req, res) => { 
   const destinations = await deleteDestination( req.params.desid ) 

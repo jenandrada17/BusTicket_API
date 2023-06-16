@@ -82,15 +82,15 @@ export async function getDestinations() {
     return rows
 }   
 
-// export async function getDictinctAddressFrom() {
-//     const [rows] = await pool.query("SELECT DISTINCT from_address FROM destinations order by from_address")  
-//     return rows
-// }  
+export async function getDictinctAddressFrom() {
+    const [rows] = await pool.query("SELECT DISTINCT from_address FROM destinations order by from_address")  
+    return rows
+}  
 
-// export async function getDictinctAddressTo() {
-//     const [rows] = await pool.query("SELECT DISTINCT to_address FROM destinations order by to_address")  
-//     return rows
-// } 
+export async function getDictinctAddressTo() {
+    const [rows] = await pool.query("SELECT DISTINCT to_address FROM destinations order by to_address")  
+    return rows
+} 
 
 export async function deleteDestination( DesID ) {  
     let [resultss] = await pool.query(`SELECT * FROM DESTINATIONS where desid = ?`, [DesID])     
