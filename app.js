@@ -1,7 +1,7 @@
 import express from 'express'
 import { getUsers, getUser, createUser, loginUser, addDestination, 
         getDestinations, deleteDestination, updatedestination,
-        getDictinctAddressFrom, getDictinctAddressTo } from './database.js'
+        getDictinctAddressFrom, getDictinctAddressTo, addTicket } from './database.js'
 // import mysql from 'mysql2'
 
 const app = express()
@@ -48,12 +48,18 @@ app.post("/adddestination", async (req, res) => {
   const { from_address, to_address, rate, note } = req.body
   const destination = await addDestination( from_address, to_address, rate, note )
 
-if (destination == "Destination already exists!") {  
-  res.status(401).send(destination)   
-}  else {
-  res.status(201).send(destination)
-} 
+  if (destination == "Destination already exists!") {  
+    res.status(401).send(destination)   
+  }  else {
+    res.status(201).send(destination)
+  } 
 
+})  
+
+app.post("/addTicket", async (req, res) => { 
+  const { desid, rate, date_created } = req.body
+  const ticket = await addTicket( desid, rate, date_created ) 
+  res.status(201).send(ticket)  
 }) 
 
 app.get("/getdestinations", async (req, res) => {

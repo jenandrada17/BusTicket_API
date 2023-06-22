@@ -110,4 +110,13 @@ export async function updatedestination( DesID, From_Address, To_Address, Rate, 
     } else {
         return "Destination ID does not exists!"
     }
-}
+} 
+export async function addTicket( Desid,  Rate, Date_created ) {  
+    await pool.query(`
+            INSERT INTO ticketing ( desid, rate, date_created )
+            VALUES (?, ?, ?)
+            `, [ Desid,  Rate, Date_created ]) 
+ 
+            return "SuccessFully Saved!" 
+
+} 
