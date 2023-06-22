@@ -117,6 +117,6 @@ export async function addTicket( Desid,  Rate, Date_created ) {
             VALUES (?, ?, ?)
             `, [ Desid,  Rate, Date_created ]) 
  
-            return "SuccessFully Saved!" 
+            return "Successfully Saved!" 
 
 } 
